@@ -6,7 +6,9 @@ export default function chToPy(zhongwen) {
   return reduce(
     res,
     (previousValue, currentDigit) => {
-      previousValue += `${source[currentDigit]} `
+      const pinyin =
+        typeof source[currentDigit] === 'object' ? source[currentDigit][0] : source[currentDigit]
+      previousValue += `${pinyin || currentDigit} `
       return previousValue
     },
     ''
