@@ -1,6 +1,6 @@
-require("babel-register")
-var transform = require("./transform")
+require('babel-register')
+const transform = require('./transform')
 
-const res = transform.chToPy('您好')
+const res = transform.default('您好')
 
 console.log(res)
