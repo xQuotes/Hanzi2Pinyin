@@ -1,8 +1,10 @@
 require('babel-register')
-const transform = require('./chToPy')
+// const transform = require('./chToPy')
+const daXiaoXie = require('./daXiaoXie')
 
-const res = transform.default('您好')
-const res1 = transform.default('于老师，我爱你')
-
-console.log(res)
-console.log(res1)
+console.log(daXiaoXie.default(103))
+console.log(daXiaoXie.default(100356054))
+console.log(daXiaoXie.default('一亿五千万零六百'))
+console.log(daXiaoXie.default('壹亿伍仟零陆佰伍拾'))
+// console.log(transform.default('您好'))
+// console.log(transform.default('于老师，我爱你'))

@@ -1,5 +1,5 @@
 import reduce from 'lodash.reduce'
-import source from './source.js'
+import source from './sourceHanzi.js'
 
 export default function chToPy(zhongwen) {
   const res = zhongwen.split('')
