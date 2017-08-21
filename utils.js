@@ -11,35 +11,32 @@ export function slitNum(str = '', num = 3) {
 }
 
 export function returnMZh(str = '', source = []) {
-  const result = str.split('').map((v) => {
+  const result = str.map((v) => {
     if (v === '0') {
       return ''
     }
     return source.find(value => value.num === v).mzh
   })
-  if (result[0]) {
-    result[0] += '仟'
-  }
 
-  if (result[1]) {
-    if (!result[0]) {
-      result[1] = `零${result[1]}佰`
-    } else {
-      result[1] = `${result[1]}佰`
-    }
-  }
-  if (result[2]) {
-    if (!(result[0] + result[1]) || !result[1]) {
-      result[2] = `零${result[2]}拾`
-    } else {
-      result[2] = `${result[2]}拾`
-    }
-  }
-  if (result[3]) {
-    if (!(result[0] + result[1] + result[2])) {
+  console.log('result', result)
+
+  if (result[0]) result[0] = `${result[0]}`
+
+  if (result[1]) result[1] = `${result[1]}拾`
+
+  if (result[2]) result[2] = `${result[2]}佰`
+
+  if (result[3]) result[3] = `${result[3]}仟`
+  else {
+    if (result[2] || (result[1] || result[0])) {
       result[3] = `零${result[3]}`
-    } else {
-      result[3] = `${result[3]}`
+    }
+    if (!result[2] && (result[1] || result[0])) {
+      result[2] = `零${result[2]}`
+    }
+
+    if (result[2] && !result[1] && result[0]) {
+      result[1] = `零${result[1]}`
     }
   }
 

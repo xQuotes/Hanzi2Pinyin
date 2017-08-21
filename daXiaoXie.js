@@ -11,8 +11,8 @@ export default function transformNum(str) {
   const stash = []
 
   res.forEach((val, key) => {
-    console.log(val)
     stash.push(returnMZh(fillVal(val), Num))
+
     if (key === 1) {
       stash[key].push('万')
     }
