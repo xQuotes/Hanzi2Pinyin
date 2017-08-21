@@ -10,6 +10,22 @@ export function slitNum(str = '', num = 3) {
   return str
 }
 
+export function trimZh(str, place) {
+  const p = place.split('_')
+
+  if (p.includes('l')) {
+    str = str.replace(/^零*/, '')
+  }
+  if (p.includes('r')) {
+    str = str.replace(/零*$/, '')
+  }
+  if (p.includes('c')) {
+    str = str.replace(/零+/, '零')
+  }
+
+  return str
+}
+
 export function returnMZh(str = '', source = []) {
   const result = str.map((v) => {
     if (v === '0') {
@@ -19,26 +35,17 @@ export function returnMZh(str = '', source = []) {
   })
 
   console.log('result', result)
-
   if (result[0]) result[0] = `${result[0]}`
+  else result[0] = '零'
 
   if (result[1]) result[1] = `${result[1]}拾`
+  else result[1] = '零'
 
   if (result[2]) result[2] = `${result[2]}佰`
+  else result[2] = '零'
 
   if (result[3]) result[3] = `${result[3]}仟`
-  else {
-    if (result[2] || (result[1] || result[0])) {
-      result[3] = `零${result[3]}`
-    }
-    if (!result[2] && (result[1] || result[0])) {
-      result[2] = `零${result[2]}`
-    }
-
-    if (result[2] && !result[1] && result[0]) {
-      result[1] = `零${result[1]}`
-    }
-  }
+  else result[3] = '零'
 
   return result
 }

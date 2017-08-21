@@ -1,5 +1,5 @@
 import Num from './sourceNum.js'
-import { slitNum, returnMZh, fillVal, chunk } from './utils'
+import { slitNum, returnMZh, fillVal, chunk, trimZh } from './utils'
 
 export default function transformNum(str) {
   if (isNaN(Number(str))) {
@@ -14,12 +14,12 @@ export default function transformNum(str) {
     stash.push(returnMZh(fillVal(val), Num))
 
     if (key === 1) {
-      stash[key].push('万')
+      stash[key].unshift('万')
     }
     if (key === 2) {
-      stash[key].push('亿')
+      stash[key].unshift('亿')
     }
   })
 
-  return stash
+  return trimZh(stash.reverse().map(v => trimZh(v.reverse().join(''), 'c_r')).join(''), 'l')
 }
