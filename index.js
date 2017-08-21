@@ -3,7 +3,7 @@ require('babel-register')
 const daXiaoXie = require('./daXiaoXie')
 
 console.log(daXiaoXie.default(103))
-console.log(daXiaoXie.default(100356054))
+console.log(daXiaoXie.default(1010356054))
 // console.log(daXiaoXie.default('一亿五千万零六百'))
 // console.log(daXiaoXie.default('壹亿伍仟零陆佰伍拾'))
 // console.log(transform.default('您好'))

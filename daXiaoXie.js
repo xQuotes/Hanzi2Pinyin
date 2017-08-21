@@ -11,15 +11,15 @@ export default function transformNum(str) {
   const stash = []
 
   res.forEach((val, key) => {
-    stash.push(returnMZh(fillVal(val), Num))
+    stash.push(trimZh(returnMZh(fillVal(val), Num).reverse().join(''), 'c_r'))
 
     if (key === 1) {
-      stash[key].unshift('万')
+      stash[key] = `${stash[key]}万`
     }
     if (key === 2) {
-      stash[key].unshift('亿')
+      stash[key] = `${stash[key]}亿`
     }
   })
 
-  return trimZh(stash.reverse().map(v => trimZh(v.reverse().join(''), 'c_r')).join(''), 'l')
+  return trimZh(stash.reverse().join(''), 'l')
 }
